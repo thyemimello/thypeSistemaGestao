@@ -1,0 +1,138 @@
+Crie um projeto FRONT-END apenas de UI/UX (sem funcionalidades reais), para apresentar um sistema de gestão estratégica com IA para uma construtora.
+
+Regras principais:
+- NÃO criar backend.
+- NÃO criar banco de dados.
+- NÃO implementar login/cadastro real (apenas telas).
+- NÃO implementar cálculo real de métricas (usar dados mock/simulados em JSON).
+- Deve existir navegação entre telas (rotas) e estado local apenas para simular.
+- O foco é DESIGN, layout, posicionamento, componentes, filtros e dashboards.
+- Estilo moderno, premium e tecnológico, inspirado na identidade da THYPE (use cores escuras + gradientes e detalhes elegantes; pode usar roxo/azul como destaque; fundo claro em algumas áreas se ficar bonito).
+- Layout responsivo (desktop, tablete, mobile), com cards, gráficos e tabelas.
+
+Stack sugerida (use esta):
+- React + TypeScript + Vite
+- TailwindCSS
+- Recharts (gráficos)
+- React Router
+- Lucide-react (ícones)
+- Componentes com aparência “dashboard SaaS” (cards, sidebar, topbar, filtros, tabelas, badges).
+
+Estrutura de rotas/telas (obrigatórias):
+
+1) /login
+- Tela linda com logo placeholder "THYPE" (não precisa da imagem real)
+- Campos: email, senha
+- Botão: Entrar
+- Link: Criar conta
+- Link: Esqueci minha senha (apenas visual)
+
+2) /cadastro
+- Campos: nome, email, senha, confirmar senha
+- Select: Tipo de usuário (Gerente Master / Gerente)
+- Botão: Criar conta
+
+3) /home (Landing interna pós-login fake)
+- Topbar com nome da empresa e menu do usuário
+- Cards rápidos: "Imobiliárias Ativas", "Reservas no mês", "Vendas no mês", "Alertas"
+- Botões grandes para acessar: “Painel do Gerente Master” e “Painel do Gerente”
+- Um bloco “Últimas atividades” (mock)
+
+4) /master/dashboard (Gerente Master)
+Precisa ser a tela MAIS LINDA.
+Componentes obrigatórios:
+- Sidebar com menus:
+  - Visão Geral
+  - Gerentes
+  - Imobiliárias
+  - Relatórios
+  - Alertas
+  - IA (apenas tela)
+- No topo: filtros (Período, Gerente, Classificação do Cliente)
+- Cards de KPI:
+  - Score médio de Esforço
+  - Score médio de Relacionamento
+  - Score médio de Retorno (ROI)
+  - Índice de Eficiência (IEG)
+- Gráficos:
+  - Linha: Reservas e Vendas por mês
+  - Barras: Esforço x Retorno por gerente
+  - Pizza/Donut: Distribuição de clientes Ouro/Prata/Bronze
+- Tabela “Ranking de Imobiliárias” com colunas:
+  - Nome, Classificação, Relacionamento (Frio/Morno/Quente/Estratégico), Reservas, Vendas, ROI, Último contato
+- Bloco “Alertas Inteligentes” (cards com ícones):
+  - Cliente ouro sem visita há 30 dias
+  - Gerente com alto esforço e baixo retorno
+  - Cliente bronze com potencial de upgrade
+  - Queda de conversão
+
+5) /master/gerentes
+- Lista de gerentes (mock) com cards e botão “Ver detalhes”
+- Detalhes do gerente (subtela ou modal):
+  - Carteira (lista de clientes)
+  - KPIs do gerente
+  - Mini gráfico esforço x retorno
+  - Últimas interações registradas
+
+6) /gerente/painel (Painel do Gerente)
+- KPIs do gerente
+- Lista de “Minha carteira” com filtros (Ouro/Prata/Bronze)
+- Botão por cliente: “Registrar Interação” (abre modal)
+
+7) /gerente/registrar-interacao
+- Formulário (somente visual):
+  - Selecionar cliente
+  - Tipo de interação (WhatsApp, Ligação, Reunião online, Reunião presencial, Visita técnica, Treinamento, Almoço estratégico, Entrega de material)
+  - Data
+  - Duração (min)
+  - Qualidade (1 a 5)
+  - Observações (textarea)
+- Botão “Salvar interação” (apenas mock; ao clicar, mostrar toast “Interação salva (simulação)” e voltar)
+
+8) /cadastro-imobiliaria
+- Form para cadastro de imobiliária/corretor (UI):
+  - Tipo (Imobiliária/Corretor)
+  - Nome
+  - Cidade
+  - Classificação (Ouro/Prata/Bronze)
+  - Responsável/Contato
+  - Status (Ativo/Inativo)
+- Botão salvar (mock com toast)
+
+9) /ia (IA Secretária - apenas visual)
+- Layout de chat bonito tipo “assistente executiva”
+- Mensagens mock: perguntas e respostas já prontas
+- Sugestões clicáveis:
+  - “Quais gerentes não têm retorno?”
+  - “Quais clientes ouro estão esfriando?”
+  - “Onde investir mais no próximo mês?”
+- IMPORTANTE: IA não calcula nada, ela só “lê” os resultados simulados e responde com texto.
+
+Dados simulados:
+- Criar um arquivo /src/mock/data.ts com:
+  - 6 gerentes
+  - até 25 clientes (imobiliárias/corretores) com classificação Ouro/Prata/Bronze
+  - interações (lista)
+  - métricas já prontas: esforço, relacionamento, retorno, IEG, vendas, reservas
+  - alertas
+- Usar esses mocks para preencher tabelas, cards e gráficos.
+
+Requisitos de design:
+- UI muito bonita, com:
+  - cards com sombras suaves, bordas arredondadas
+  - badges para Ouro/Prata/Bronze e Frio/Morno/Quente/Estratégico
+  - tipografia forte em títulos e limpa em textos
+  - uso de gradientes discretos e ícones
+- Sidebar fixa + conteúdo rolável
+- Boa hierarquia visual
+
+Entregáveis:
+- Projeto rodando no Replit (npm install + npm run dev)
+- Código organizado em:
+  /pages
+  /components
+  /mock
+  /styles (se precisar)
+- Não quebrar build. Sem dependências desnecessárias.
+
+Faça primeiro as telas e layout. Depois conecte tudo aos dados mock para preencher gráficos e tabelas.
