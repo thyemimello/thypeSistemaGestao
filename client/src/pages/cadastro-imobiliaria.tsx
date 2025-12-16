@@ -35,7 +35,7 @@ export default function CadastroImobiliaria() {
           <ArrowLeft className="w-4 h-4 mr-2" /> Voltar
         </Button>
 
-        <Card className="glass-card border-white/10">
+        <Card className="glass-card border-border">
           <CardHeader>
             <CardTitle>Novo Cadastro</CardTitle>
             <CardDescription>Cadastre uma Imobiliária ou Corretor Autônomo.</CardDescription>
@@ -45,14 +45,14 @@ export default function CadastroImobiliaria() {
               
               <div className="grid grid-cols-2 gap-4">
                 <div 
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center gap-2 ${type === 'imobiliaria' ? 'border-primary bg-primary/10' : 'border-white/10 hover:border-white/30'}`}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center gap-2 ${type === 'imobiliaria' ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/30'}`}
                   onClick={() => setType('imobiliaria')}
                 >
                   <Building className="w-6 h-6" />
                   <span className="font-medium">Imobiliária</span>
                 </div>
                 <div 
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center gap-2 ${type === 'corretor' ? 'border-primary bg-primary/10' : 'border-white/10 hover:border-white/30'}`}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center gap-2 ${type === 'corretor' ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/30'}`}
                   onClick={() => setType('corretor')}
                 >
                   <User className="w-6 h-6" />
@@ -62,18 +62,18 @@ export default function CadastroImobiliaria() {
 
               <div className="space-y-2">
                 <Label>Nome Comercial</Label>
-                <Input placeholder={type === 'imobiliaria' ? "Ex: Imobiliária Elite" : "Ex: João Silva"} className="bg-background/50 border-white/10" />
+                <Input placeholder={type === 'imobiliaria' ? "Ex: Imobiliária Elite" : "Ex: João Silva"} className="bg-white border-input" />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Cidade/Região</Label>
-                  <Input placeholder="Ex: São Paulo" className="bg-background/50 border-white/10" />
+                  <Input placeholder="Ex: São Paulo" className="bg-white border-input" />
                 </div>
                 <div className="space-y-2">
                   <Label>Classificação Inicial</Label>
                   <Select>
-                    <SelectTrigger className="bg-background/50 border-white/10">
+                    <SelectTrigger className="bg-white border-input">
                       <SelectValue placeholder="Selecione" />
                     </SelectTrigger>
                     <SelectContent>
@@ -87,11 +87,11 @@ export default function CadastroImobiliaria() {
 
               <div className="space-y-2">
                 <Label>Responsável / Contato Principal</Label>
-                <Input placeholder="Nome do contato" className="bg-background/50 border-white/10" />
+                <Input placeholder="Nome do contato" className="bg-white border-input" />
               </div>
 
               <div className="flex items-center gap-2 pt-2">
-                 <input type="checkbox" id="active" className="rounded border-white/20 bg-background/50" defaultChecked />
+                 <input type="checkbox" id="active" className="rounded border-input bg-white" defaultChecked />
                  <Label htmlFor="active" className="cursor-pointer">Cadastro Ativo</Label>
               </div>
 

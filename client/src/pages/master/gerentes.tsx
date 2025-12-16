@@ -25,9 +25,9 @@ export default function GerentesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {managers.map((manager) => (
-            <Card key={manager.id} className="glass-card border-white/5 hover:border-primary/30 transition-all duration-300 group">
+            <Card key={manager.id} className="glass-card border-border hover:border-primary/30 transition-all duration-300 group">
               <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                <Avatar className="h-16 w-16 border-2 border-primary/20 group-hover:border-primary transition-colors">
+                <Avatar className="h-16 w-16 border-2 border-primary/10 group-hover:border-primary transition-colors">
                   <AvatarImage src={manager.avatar} />
                   <AvatarFallback>{manager.name.substring(0, 2)}</AvatarFallback>
                 </Avatar>
@@ -35,8 +35,8 @@ export default function GerentesPage() {
                   <CardTitle className="text-lg">{manager.name}</CardTitle>
                   <CardDescription>{manager.role}</CardDescription>
                   <div className="flex gap-2 mt-2">
-                    <Button variant="outline" size="icon" className="h-7 w-7 rounded-full"><Mail className="w-3 h-3" /></Button>
-                    <Button variant="outline" size="icon" className="h-7 w-7 rounded-full"><Phone className="w-3 h-3" /></Button>
+                    <Button variant="outline" size="icon" className="h-7 w-7 rounded-full border-border bg-transparent hover:bg-primary/10 hover:text-primary"><Mail className="w-3 h-3" /></Button>
+                    <Button variant="outline" size="icon" className="h-7 w-7 rounded-full border-border bg-transparent hover:bg-primary/10 hover:text-primary"><Phone className="w-3 h-3" /></Button>
                   </div>
                 </div>
               </CardHeader>
@@ -48,7 +48,7 @@ export default function GerentesPage() {
                   </div>
                   <div>
                     <p className="text-muted-foreground text-xs">ROI</p>
-                    <p className="font-bold text-lg text-emerald-400">{manager.kpis.roi}%</p>
+                    <p className="font-bold text-lg text-emerald-600">{manager.kpis.roi}%</p>
                   </div>
                 </div>
                 
@@ -63,11 +63,11 @@ export default function GerentesPage() {
               <CardFooter className="pt-2">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className="w-full group-hover:bg-primary/90" onClick={() => setSelectedManager(manager)}>
+                    <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all" variant="outline">
                       Ver Detalhes Completos <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col bg-card border-white/10">
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col bg-white border-border">
                     <DialogHeader>
                       <DialogTitle className="flex items-center gap-3 text-2xl">
                         <Avatar className="h-10 w-10">
@@ -82,17 +82,17 @@ export default function GerentesPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-4 overflow-y-auto">
                       {/* Left Column: KPIs */}
                       <div className="space-y-6">
-                        <Card className="bg-secondary/20 border-white/5">
+                        <Card className="bg-secondary/30 border-border">
                           <CardHeader className="pb-2"><CardTitle className="text-sm">Score de Esforço</CardTitle></CardHeader>
                           <CardContent>
                             <span className="text-3xl font-bold">{selectedManager.kpis.effort}</span>
                             <Progress value={selectedManager.kpis.effort} className="h-2 mt-2" />
                           </CardContent>
                         </Card>
-                        <Card className="bg-secondary/20 border-white/5">
+                        <Card className="bg-secondary/30 border-border">
                           <CardHeader className="pb-2"><CardTitle className="text-sm">Retorno (ROI)</CardTitle></CardHeader>
                           <CardContent>
-                            <span className="text-3xl font-bold text-emerald-400">{selectedManager.kpis.roi}%</span>
+                            <span className="text-3xl font-bold text-emerald-600">{selectedManager.kpis.roi}%</span>
                           </CardContent>
                         </Card>
                         <div className="h-[200px]">
@@ -102,9 +102,9 @@ export default function GerentesPage() {
                               { name: 'Esforço', val: selectedManager.kpis.effort },
                               { name: 'Retorno', val: selectedManager.kpis.roi }
                             ]}>
-                              <XAxis dataKey="name" stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                              <YAxis stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                              <Tooltip cursor={{fill: 'transparent'}} contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px' }} />
+                              <XAxis dataKey="name" stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
+                              <YAxis stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
+                              <Tooltip cursor={{fill: 'transparent'}} contentStyle={{ backgroundColor: '#ffffff', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                               <Bar dataKey="val" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
                             </BarChart>
                           </ResponsiveContainer>
@@ -117,10 +117,10 @@ export default function GerentesPage() {
                           <Activity className="w-4 h-4 text-primary" />
                           Carteira de Clientes
                         </h3>
-                        <ScrollArea className="h-[400px] rounded-lg border border-white/5 bg-secondary/10 p-4">
+                        <ScrollArea className="h-[400px] rounded-lg border border-border bg-secondary/10 p-4">
                           <div className="space-y-3">
                             {clients.filter(c => c.managerId === selectedManager.id).map(client => (
-                              <div key={client.id} className="flex items-center justify-between p-3 rounded-lg bg-card hover:bg-card/80 transition-colors border border-white/5">
+                              <div key={client.id} className="flex items-center justify-between p-3 rounded-lg bg-white hover:bg-secondary/50 transition-colors border border-border shadow-sm">
                                 <div className="flex items-center gap-3">
                                   <div className={`w-2 h-2 rounded-full ${client.classification === 'Ouro' ? 'bg-amber-400' : client.classification === 'Prata' ? 'bg-slate-300' : 'bg-orange-700'}`} />
                                   <div>
@@ -131,7 +131,7 @@ export default function GerentesPage() {
                                   </div>
                                 </div>
                                 <div className="text-right">
-                                  <Badge variant="outline" className="mb-1 border-white/10">{client.relationship}</Badge>
+                                  <Badge variant="outline" className="mb-1 border-border">{client.relationship}</Badge>
                                   <p className="text-xs text-muted-foreground">Último contato: {new Date(client.metrics.lastContact).toLocaleDateString()}</p>
                                 </div>
                               </div>

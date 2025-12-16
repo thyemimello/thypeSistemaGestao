@@ -15,20 +15,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-background relative overflow-hidden">
+    <div className="min-h-screen w-full flex items-center justify-center bg-background relative overflow-hidden auth-gradient">
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px] animate-pulse delay-1000" />
       </div>
 
-      <Card className="w-full max-w-md z-10 glass-card border-white/10 shadow-2xl">
+      <Card className="w-full max-w-md z-10 bg-white/80 backdrop-blur-xl border-border shadow-2xl">
         <CardHeader className="space-y-6 text-center pb-8 pt-10">
           <div className="mx-auto w-16 h-16 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/30 mb-4">
             <span className="font-display font-bold text-white text-3xl">T</span>
           </div>
           <div className="space-y-2">
-            <h1 className="text-3xl font-display font-bold tracking-tight text-white">Bem-vindo ao THYPE</h1>
+            <h1 className="text-3xl font-display font-bold tracking-tight text-foreground">Bem-vindo ao THYPE</h1>
             <p className="text-muted-foreground text-sm">Sistema de Gestão Estratégica</p>
           </div>
         </CardHeader>
@@ -40,7 +40,7 @@ export default function LoginPage() {
                 id="email" 
                 type="email" 
                 placeholder="nome@thype.com.br" 
-                className="bg-background/50 border-white/10 focus:border-primary/50 text-white"
+                className="bg-white border-input focus:border-primary text-foreground"
                 defaultValue="admin@thype.com.br"
               />
             </div>
@@ -53,7 +53,7 @@ export default function LoginPage() {
                 id="password" 
                 type="password" 
                 placeholder="••••••••" 
-                className="bg-background/50 border-white/10 focus:border-primary/50 text-white"
+                className="bg-white border-input focus:border-primary text-foreground"
                 defaultValue="password"
               />
             </div>

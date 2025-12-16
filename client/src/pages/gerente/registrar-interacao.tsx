@@ -43,7 +43,7 @@ export default function RegistrarInteracao() {
           <ArrowLeft className="w-4 h-4 mr-2" /> Voltar
         </Button>
 
-        <Card className="glass-card border-white/10">
+        <Card className="glass-card border-border">
           <CardHeader>
             <CardTitle>Registrar Nova Interação</CardTitle>
             <CardDescription>Documente cada ponto de contato para alimentar o algoritmo de score.</CardDescription>
@@ -54,7 +54,7 @@ export default function RegistrarInteracao() {
               <div className="space-y-2">
                 <Label>Cliente</Label>
                 <Select defaultValue={preSelectedClientId || undefined}>
-                  <SelectTrigger className="bg-background/50 border-white/10">
+                  <SelectTrigger className="bg-white border-input">
                     <SelectValue placeholder="Selecione o cliente" />
                   </SelectTrigger>
                   <SelectContent>
@@ -69,7 +69,7 @@ export default function RegistrarInteracao() {
                 <div className="space-y-2">
                   <Label>Tipo de Interação</Label>
                   <Select>
-                    <SelectTrigger className="bg-background/50 border-white/10">
+                    <SelectTrigger className="bg-white border-input">
                       <SelectValue placeholder="Tipo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -85,14 +85,14 @@ export default function RegistrarInteracao() {
                 
                 <div className="space-y-2">
                   <Label>Data</Label>
-                  <Input type="date" className="bg-background/50 border-white/10" defaultValue={new Date().toISOString().split('T')[0]} />
+                  <Input type="date" className="bg-white border-input" defaultValue={new Date().toISOString().split('T')[0]} />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                  <div className="space-y-2">
                   <Label>Duração (minutos)</Label>
-                  <Input type="number" placeholder="Ex: 30" className="bg-background/50 border-white/10" />
+                  <Input type="number" placeholder="Ex: 30" className="bg-white border-input" />
                 </div>
               </div>
 
@@ -117,7 +117,7 @@ export default function RegistrarInteracao() {
                 <Label>Observações e Próximos Passos</Label>
                 <Textarea 
                   placeholder="Descreva o que foi conversado e qual o próximo passo combinado..." 
-                  className="bg-background/50 border-white/10 min-h-[100px]"
+                  className="bg-white border-input min-h-[100px]"
                 />
               </div>
 

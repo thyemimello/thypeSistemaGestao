@@ -71,12 +71,12 @@ export default function IAChatPage() {
         </div>
 
         {/* Chat Area */}
-        <div className="flex-1 bg-card/30 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+        <div className="flex-1 bg-white border border-border rounded-2xl overflow-hidden flex flex-col shadow-lg shadow-primary/5">
           <ScrollArea className="flex-1 p-6">
             <div className="space-y-6">
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex items-start gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <Avatar className={`w-8 h-8 border ${msg.role === 'assistant' ? 'border-primary/50 bg-primary/10' : 'border-white/10'}`}>
+                  <Avatar className={`w-8 h-8 border ${msg.role === 'assistant' ? 'border-primary/20 bg-primary/10' : 'border-border'}`}>
                     {msg.role === 'assistant' ? (
                       <div className="w-full h-full flex items-center justify-center text-primary"><Bot className="w-4 h-4" /></div>
                     ) : (
@@ -85,9 +85,9 @@ export default function IAChatPage() {
                   </Avatar>
                   
                   <div className={`
-                    max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed shadow-md
+                    max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed shadow-sm
                     ${msg.role === 'assistant' 
-                      ? 'bg-card border border-white/5 text-foreground rounded-tl-none' 
+                      ? 'bg-secondary text-foreground border border-border rounded-tl-none' 
                       : 'bg-primary text-primary-foreground rounded-tr-none'}
                   `}>
                     {msg.content}
@@ -98,7 +98,7 @@ export default function IAChatPage() {
           </ScrollArea>
 
           {/* Input Area */}
-          <div className="p-4 bg-card border-t border-white/5">
+          <div className="p-4 bg-white border-t border-border">
             
             {/* Suggestions */}
             <div className="flex gap-2 mb-4 overflow-x-auto pb-2 scrollbar-thin">
@@ -106,7 +106,7 @@ export default function IAChatPage() {
                 <button 
                   key={i}
                   onClick={() => setInput(s)}
-                  className="whitespace-nowrap px-3 py-1.5 rounded-full bg-secondary/50 hover:bg-secondary text-xs font-medium transition-colors border border-white/5"
+                  className="whitespace-nowrap px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary/80 text-muted-foreground text-xs font-medium transition-colors border border-border"
                 >
                   {s}
                 </button>
@@ -119,7 +119,7 @@ export default function IAChatPage() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Digite sua pergunta para a IA..." 
-                className="h-12 pl-4 pr-12 bg-background/50 border-white/10 focus:border-primary/50 rounded-xl"
+                className="h-12 pl-4 pr-12 bg-secondary/30 border-input focus:border-primary/50 rounded-xl text-foreground placeholder:text-muted-foreground"
               />
               <Button 
                 onClick={handleSend}

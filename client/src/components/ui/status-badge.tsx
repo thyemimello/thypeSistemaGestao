@@ -14,24 +14,24 @@ export function StatusBadge({ value, type = 'status', className }: StatusBadgePr
     const v = val.toLowerCase();
     
     if (t === 'classification') {
-      if (v === 'ouro') return "bg-amber-400/10 text-amber-400 border-amber-400/20";
-      if (v === 'prata') return "bg-slate-300/10 text-slate-300 border-slate-300/20";
-      if (v === 'bronze') return "bg-orange-700/10 text-orange-600 border-orange-700/20";
+      if (v === 'ouro') return "bg-amber-100 text-amber-700 border-amber-200";
+      if (v === 'prata') return "bg-slate-100 text-slate-600 border-slate-200";
+      if (v === 'bronze') return "bg-orange-100 text-orange-700 border-orange-200";
     }
     
     if (t === 'relationship') {
-      if (v === 'frio') return "bg-blue-400/10 text-blue-400 border-blue-400/20";
-      if (v === 'morno') return "bg-yellow-400/10 text-yellow-400 border-yellow-400/20";
-      if (v === 'quente') return "bg-orange-500/10 text-orange-500 border-orange-500/20";
-      if (v === 'estratégico') return "bg-purple-500/10 text-purple-500 border-purple-500/20";
+      if (v === 'frio') return "bg-blue-100 text-blue-700 border-blue-200";
+      if (v === 'morno') return "bg-yellow-100 text-yellow-700 border-yellow-200";
+      if (v === 'quente') return "bg-orange-100 text-orange-600 border-orange-200";
+      if (v === 'estratégico') return "bg-purple-100 text-purple-700 border-purple-200";
     }
 
     if (t === 'status') {
-      if (v === 'ativo') return "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
-      if (v === 'inativo') return "bg-destructive/10 text-destructive border-destructive/20";
+      if (v === 'ativo') return "bg-emerald-100 text-emerald-700 border-emerald-200";
+      if (v === 'inativo') return "bg-rose-100 text-rose-700 border-rose-200";
     }
 
-    return "bg-muted text-muted-foreground border-border";
+    return "bg-secondary text-muted-foreground border-border";
   };
 
   return (

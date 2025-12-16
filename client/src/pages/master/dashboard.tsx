@@ -118,7 +118,7 @@ export default function MasterDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Main Chart */}
-          <Card className="lg:col-span-2 glass-card border-white/5">
+          <Card className="lg:col-span-2 glass-card border-border">
             <CardHeader>
               <CardTitle>Vendas e Reservas</CardTitle>
               <CardDescription>Evolução mensal comparativa</CardDescription>
@@ -127,12 +127,12 @@ export default function MasterDashboard() {
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={monthlyData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
-                    <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                    <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.8} />
+                    <XAxis dataKey="name" stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
                     <Tooltip 
-                      contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }}
-                      itemStyle={{ color: '#e2e8f0' }}
+                      contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', color: '#0f172a', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      itemStyle={{ color: '#0f172a' }}
                     />
                     <Line type="monotone" dataKey="vendas" stroke="#8b5cf6" strokeWidth={3} dot={{ r: 4, fill: '#8b5cf6' }} activeDot={{ r: 6 }} />
                     <Line type="monotone" dataKey="reservas" stroke="#06b6d4" strokeWidth={3} dot={{ r: 4, fill: '#06b6d4' }} />
@@ -143,7 +143,7 @@ export default function MasterDashboard() {
           </Card>
 
           {/* Distribution Chart */}
-          <Card className="glass-card border-white/5">
+          <Card className="glass-card border-border">
             <CardHeader>
               <CardTitle>Carteira de Clientes</CardTitle>
               <CardDescription>Distribuição por classificação</CardDescription>
@@ -166,14 +166,14 @@ export default function MasterDashboard() {
                       ))}
                     </Pie>
                     <Tooltip 
-                      contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#fff' }}
+                      contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      itemStyle={{ color: '#0f172a' }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="text-center">
-                    <span className="text-3xl font-bold font-display">{clients.length}</span>
+                    <span className="text-3xl font-bold font-display text-foreground">{clients.length}</span>
                     <p className="text-xs text-muted-foreground">Total</p>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function MasterDashboard() {
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[index] }}></div>
                       <span className="text-muted-foreground">{item.name}</span>
                     </div>
-                    <span className="font-semibold">{item.value} ({Math.round(item.value / clients.length * 100)}%)</span>
+                    <span className="font-semibold text-foreground">{item.value} ({Math.round(item.value / clients.length * 100)}%)</span>
                   </div>
                 ))}
               </div>
@@ -198,7 +198,7 @@ export default function MasterDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Alerts */}
-          <Card className="glass-card border-white/5 h-full">
+          <Card className="glass-card border-border h-full">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-amber-500" />
@@ -212,7 +212,7 @@ export default function MasterDashboard() {
                 { title: "Potencial Upgrade", desc: "Corretora Maria (Bronze -> Prata)", priority: "low" },
                 { title: "Queda Conversão", desc: "Equipe Sul (-5% este mês)", priority: "high" },
               ].map((alert, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 hover:bg-card border border-white/5 transition-colors">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30 hover:bg-secondary border border-border transition-colors">
                   <div className={`w-2 h-2 mt-2 rounded-full ${alert.priority === 'high' ? 'bg-destructive' : alert.priority === 'medium' ? 'bg-amber-500' : 'bg-emerald-500'}`} />
                   <div>
                     <p className="text-sm font-medium">{alert.title}</p>
@@ -227,18 +227,18 @@ export default function MasterDashboard() {
           </Card>
 
           {/* Ranking Table */}
-          <Card className="lg:col-span-2 glass-card border-white/5">
+          <Card className="lg:col-span-2 glass-card border-border">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle>Ranking de Imobiliárias</CardTitle>
                 <CardDescription>Top performance por ROI</CardDescription>
               </div>
-              <Button variant="outline" size="sm" className="hidden sm:flex">Ver relatório completo</Button>
+              <Button variant="outline" size="sm" className="hidden sm:flex border-border">Ver relatório completo</Button>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
-                  <TableRow className="hover:bg-transparent border-white/5">
+                  <TableRow className="hover:bg-transparent border-border">
                     <TableHead>Imobiliária</TableHead>
                     <TableHead>Classificação</TableHead>
                     <TableHead>Relacionamento</TableHead>
@@ -248,11 +248,11 @@ export default function MasterDashboard() {
                 </TableHeader>
                 <TableBody>
                   {clients.slice(0, 5).map((client) => (
-                    <TableRow key={client.id} className="hover:bg-white/5 border-white/5">
+                    <TableRow key={client.id} className="hover:bg-secondary/50 border-border">
                       <TableCell className="font-medium">{client.name}</TableCell>
                       <TableCell><StatusBadge value={client.classification} type="classification" /></TableCell>
                       <TableCell><StatusBadge value={client.relationship} type="relationship" /></TableCell>
-                      <TableCell className="text-right font-mono text-emerald-400">+{client.metrics.roi}%</TableCell>
+                      <TableCell className="text-right font-mono text-emerald-600">+{client.metrics.roi}%</TableCell>
                       <TableCell className="text-right">
                         <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                           <ArrowUpRight className="w-4 h-4" />

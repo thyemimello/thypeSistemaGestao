@@ -42,13 +42,13 @@ export default function GerentePainel() {
         </div>
 
         {/* Clients List */}
-        <Card className="glass-card border-white/5">
+        <Card className="glass-card border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-4">
             <CardTitle>Minha Carteira</CardTitle>
             <div className="flex items-center gap-2">
               <div className="relative w-64">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Buscar cliente..." className="pl-9 bg-secondary/50 border-white/5" />
+                <Input placeholder="Buscar cliente..." className="pl-9 bg-secondary border-border" />
               </div>
               <Button variant="outline" size="icon"><Filter className="w-4 h-4" /></Button>
             </div>
@@ -56,7 +56,7 @@ export default function GerentePainel() {
           <CardContent>
             <Table>
               <TableHeader>
-                <TableRow className="hover:bg-transparent border-white/5">
+                <TableRow className="hover:bg-transparent border-border">
                   <TableHead>Cliente</TableHead>
                   <TableHead>Classificação</TableHead>
                   <TableHead>Relacionamento</TableHead>
@@ -66,7 +66,7 @@ export default function GerentePainel() {
               </TableHeader>
               <TableBody>
                 {myClients.map((client) => (
-                  <TableRow key={client.id} className="hover:bg-white/5 border-white/5 group">
+                  <TableRow key={client.id} className="hover:bg-secondary/50 border-border group">
                     <TableCell>
                       <div>
                         <p className="font-medium">{client.name}</p>
@@ -80,7 +80,7 @@ export default function GerentePainel() {
                     </TableCell>
                     <TableCell className="text-right">
                       <Link href={`/gerente/registrar-interacao?client=${client.id}`}>
-                        <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity text-primary hover:text-primary hover:bg-primary/10">
                           <MessageSquarePlus className="w-4 h-4 mr-2" />
                           Registrar
                         </Button>

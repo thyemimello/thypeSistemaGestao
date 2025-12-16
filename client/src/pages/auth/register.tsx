@@ -16,12 +16,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-background relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute bottom-[20%] left-[10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
+    <div className="min-h-screen w-full flex items-center justify-center bg-background relative overflow-hidden auth-gradient">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute bottom-[20%] left-[10%] w-[40%] h-[40%] bg-blue-600/5 rounded-full blur-[100px]" />
       </div>
 
-      <Card className="w-full max-w-md z-10 glass-card border-white/10 shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <Card className="w-full max-w-md z-10 bg-white/80 backdrop-blur-xl border-border shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700">
         <CardHeader className="space-y-2 text-center pb-6 pt-8">
           <div className="absolute top-4 left-4">
             <Link href="/login">
@@ -30,25 +30,25 @@ export default function RegisterPage() {
               </Button>
             </Link>
           </div>
-          <h1 className="text-2xl font-display font-bold tracking-tight text-white">Criar Nova Conta</h1>
+          <h1 className="text-2xl font-display font-bold tracking-tight text-foreground">Criar Nova Conta</h1>
           <p className="text-muted-foreground text-sm">Preencha os dados para solicitar acesso</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Nome Completo</Label>
-              <Input id="name" placeholder="Seu nome" className="bg-background/50 border-white/10" />
+              <Input id="name" placeholder="Seu nome" className="bg-white border-input" />
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="email">Email Corporativo</Label>
-              <Input id="email" type="email" placeholder="nome@thype.com.br" className="bg-background/50 border-white/10" />
+              <Input id="email" type="email" placeholder="nome@thype.com.br" className="bg-white border-input" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="role">Tipo de Acesso</Label>
               <Select>
-                <SelectTrigger className="bg-background/50 border-white/10">
+                <SelectTrigger className="bg-white border-input">
                   <SelectValue placeholder="Selecione sua função" />
                 </SelectTrigger>
                 <SelectContent>
@@ -61,11 +61,11 @@ export default function RegisterPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="password">Senha</Label>
-                <Input id="password" type="password" className="bg-background/50 border-white/10" />
+                <Input id="password" type="password" className="bg-white border-input" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="confirm">Confirmar</Label>
-                <Input id="confirm" type="password" className="bg-background/50 border-white/10" />
+                <Input id="confirm" type="password" className="bg-white border-input" />
               </div>
             </div>
 
