@@ -139,6 +139,53 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+
+        {/* Development Sitemap - For easy navigation review */}
+        <div className="pt-10 border-t border-white/5">
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Mapa do Site (Acesso Rápido)</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Link href="/login">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Login
+              </Button>
+            </Link>
+            <Link href="/cadastro">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Cadastro Usuário
+              </Button>
+            </Link>
+            <Link href="/master/dashboard">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Dashboard Master
+              </Button>
+            </Link>
+            <Link href="/master/gerentes">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Lista de Gerentes
+              </Button>
+            </Link>
+            <Link href="/cadastro-imobiliaria">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Cadastro Imobiliária
+              </Button>
+            </Link>
+            <Link href="/ia">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                IA Secretária
+              </Button>
+            </Link>
+            <Link href="/gerente/painel">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Painel Gerente
+              </Button>
+            </Link>
+            <Link href="/gerente/registrar-interacao">
+              <Button variant="outline" className="w-full justify-start text-xs border-white/5 bg-white/5 hover:bg-white/10">
+                Registrar Interação
+              </Button>
+            </Link>
+          </div>
+        </div>
       </main>
     </div>
   );
