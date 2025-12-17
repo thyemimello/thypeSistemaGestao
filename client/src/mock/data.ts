@@ -47,7 +47,7 @@ export interface Interaction {
 export const managers: Manager[] = [
   {
     id: 'm1',
-    name: 'Roberto Almeida',
+    name: 'Thiago Dalbosco',
     role: 'Gerente',
     avatar: 'https://i.pravatar.cc/150?u=m1',
     kpis: { effort: 85, relationship: 90, roi: 120, ieg: 1.4, sales: 15, reservations: 42 }

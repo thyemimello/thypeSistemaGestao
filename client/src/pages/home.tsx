@@ -28,7 +28,7 @@ export default function HomePage() {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-foreground">Roberto Almeida</p>
+              <p className="text-sm font-medium text-foreground">Thiago Dalbosco</p>
               <p className="text-xs text-muted-foreground">Gerente Master</p>
             </div>
             <Avatar className="h-9 w-9 border border-border">
@@ -48,7 +48,7 @@ export default function HomePage() {
       <main className="flex-1 p-8 max-w-7xl mx-auto w-full space-y-12">
         {/* Welcome Section */}
         <div className="space-y-2 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <h1 className="text-4xl font-display font-bold text-foreground">Bom dia, Roberto.</h1>
+          <h1 className="text-4xl font-display font-bold text-foreground">Bom dia, Thiago.</h1>
           <p className="text-lg text-muted-foreground">Aqui está o resumo estratégico de hoje.</p>
         </div>
 
@@ -118,7 +118,7 @@ export default function HomePage() {
             {[
               { user: "Fernanda Costa", action: "registrou visita técnica", target: "Imobiliária Elite", time: "há 10 min" },
               { user: "Carlos Silva", action: "atualizou o status de", target: "Corretor João", time: "há 32 min" },
-              { user: "Roberto Almeida", action: "finalizou venda", target: "Reserva #4092", time: "há 1 hora" },
+              { user: "Thiago Dalbosco", action: "finalizou venda", target: "Reserva #4092", time: "há 1 hora" },
               { user: "Sistema IA", action: "gerou alerta de risco", target: "Carteira Sul", time: "há 2 horas" },
             ].map((activity, i) => (
               <div key={i} className="p-4 flex items-center justify-between hover:bg-secondary/50 transition-colors rounded-lg">

@@ -20,7 +20,7 @@ export default function IAChatPage() {
     {
       id: '1',
       role: 'assistant',
-      content: 'Olá, Roberto. Sou sua assistente estratégica. Analisei os dados de hoje e notei que a "Imobiliária Prime" está sem visitas há 30 dias, mesmo sendo um cliente Ouro. Gostaria de agendar um alerta para o gerente responsável?',
+      content: 'Olá, Thiago. Sou sua assistente estratégica. Analisei os dados de hoje e notei que a "Imobiliária Prime" está sem visitas há 30 dias, mesmo sendo um cliente Ouro. Gostaria de agendar um alerta para o gerente responsável?',
       timestamp: new Date()
     }
   ]);
