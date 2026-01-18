@@ -36,6 +36,7 @@ function Router() {
       <Route path="/register" component={Register} />
       
       {/* App Routes (Broker) */}
+      <Route path="/app" component={Home} />
       <Route path="/app/home" component={Home} />
       <Route path="/app/chat" component={Chat} />
       <Route path="/app/catalogo" component={Catalogo} />
