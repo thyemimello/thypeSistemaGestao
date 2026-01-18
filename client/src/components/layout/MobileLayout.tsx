@@ -29,10 +29,10 @@ export default function MobileLayout({ children, role = "broker" }: MobileLayout
     { icon: MessageSquare, label: "Chat", href: "/app/chat" },
     { icon: User, label: "Perfil", href: "/app/perfil" },
   ] : role === "admin" ? [
-    { icon: Home, label: "Dashboard", href: "/admin/dashboard" },
+    { icon: Home, label: "Painel", href: "/admin/dashboard" },
     { icon: Briefcase, label: "Gerentes", href: "/admin/gerentes" },
     { icon: Search, label: "Imóveis", href: "/admin/imoveis" },
-    { icon: MessageSquare, label: "Chat Geral", href: "/admin/chat" },
+    { icon: MessageSquare, label: "Chat", href: "/admin/chat" },
     { icon: User, label: "Perfil", href: "/admin/perfil" },
   ] : [ // Manager
     { icon: Home, label: "Painel", href: "/manager/dashboard" },
