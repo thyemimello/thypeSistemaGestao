@@ -284,36 +284,49 @@ export default function Catalogo() {
                 />
               </div>
 
-              <div className="flex items-center justify-between mt-4">
-                <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-                  <Button
-                    size="sm"
-                    variant={filterStatus === null ? "default" : "ghost"}
-                    className={filterStatus === null ? "bg-primary text-black" : "text-white/60"}
-                    onClick={() => setFilterStatus(null)}
-                    data-testid="filter-all"
-                  >
-                    Todos ({statusCounts.all})
-                  </Button>
-                  {Object.entries(statusCounts).filter(([k]) => k !== "all").map(([status, count]) => (
-                    <Button
-                      key={status}
-                      size="sm"
-                      variant={filterStatus === status ? "default" : "ghost"}
-                      className={filterStatus === status ? "bg-primary text-black" : "text-white/60"}
-                      onClick={() => setFilterStatus(status)}
-                      data-testid={`filter-${status.toLowerCase().replace(" ", "-")}`}
-                    >
-                      {status} ({count})
-                    </Button>
-                  ))}
-                </div>
+              <div className="flex flex-wrap items-center gap-2 mt-4">
+                <Button
+                  size="sm"
+                  variant={filterStatus === null ? "default" : "ghost"}
+                  className={`text-xs ${filterStatus === null ? "bg-primary text-black" : "text-white/60 border-white/10"}`}
+                  onClick={() => setFilterStatus(null)}
+                  data-testid="filter-all"
+                >
+                  Todos
+                </Button>
+                <Button
+                  size="sm"
+                  variant={filterStatus === "Lançamento" ? "default" : "ghost"}
+                  className={`text-xs ${filterStatus === "Lançamento" ? "bg-primary text-black" : "text-white/60 border-white/10"}`}
+                  onClick={() => setFilterStatus("Lançamento")}
+                  data-testid="filter-lancamento"
+                >
+                  Lançamento
+                </Button>
+                <Button
+                  size="sm"
+                  variant={filterStatus === "Em obras" ? "default" : "ghost"}
+                  className={`text-xs ${filterStatus === "Em obras" ? "bg-primary text-black" : "text-white/60 border-white/10"}`}
+                  onClick={() => setFilterStatus("Em obras")}
+                  data-testid="filter-em-obras"
+                >
+                  Em obras
+                </Button>
+                <Button
+                  size="sm"
+                  variant={filterStatus === "Pronto" ? "default" : "ghost"}
+                  className={`text-xs ${filterStatus === "Pronto" ? "bg-primary text-black" : "text-white/60 border-white/10"}`}
+                  onClick={() => setFilterStatus("Pronto")}
+                  data-testid="filter-pronto"
+                >
+                  Pronto
+                </Button>
                 
-                <div className="flex gap-1 ml-2">
+                <div className="flex gap-1 ml-auto">
                   <Button
                     size="icon"
                     variant="ghost"
-                    className={viewMode === "list" ? "text-primary" : "text-white/40"}
+                    className={`h-8 w-8 ${viewMode === "list" ? "text-primary" : "text-white/40"}`}
                     onClick={() => setViewMode("list")}
                   >
                     <List className="w-4 h-4" />
@@ -321,7 +334,7 @@ export default function Catalogo() {
                   <Button
                     size="icon"
                     variant="ghost"
-                    className={viewMode === "grid" ? "text-primary" : "text-white/40"}
+                    className={`h-8 w-8 ${viewMode === "grid" ? "text-primary" : "text-white/40"}`}
                     onClick={() => setViewMode("grid")}
                   >
                     <Grid3X3 className="w-4 h-4" />
