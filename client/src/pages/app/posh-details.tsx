@@ -111,9 +111,9 @@ export default function PoshDetails() {
               />
             </div>
             <motion.svg
-              viewBox="0 0 900 200"
-              className="absolute w-[95%] max-w-[700px] h-auto top-1/3"
-              style={{ filter: "drop-shadow(0 0 12px rgba(212, 175, 55, 0.6))" }}
+              viewBox="0 0 500 140"
+              className="absolute w-[90%] max-w-[550px] h-auto top-[30%]"
+              style={{ filter: "drop-shadow(0 0 15px rgba(212, 175, 55, 0.7))" }}
               initial={{ x: "-120%", opacity: 0 }}
               animate={{ 
                 x: introPhase >= 1 ? "0%" : "-120%", 
@@ -124,8 +124,16 @@ export default function PoshDetails() {
                 ease: [0.16, 1, 0.3, 1] 
               }}
             >
+              {/* Porsche 911 body outline - iconic sloping rear */}
               <motion.path
-                d="M20,140 L60,140 L80,130 L120,125 L160,122 L220,120 L280,118 L320,100 L360,85 L400,75 L450,70 L500,68 L540,70 L580,75 L620,82 L660,95 L700,115 L740,120 L800,122 L840,128 L860,140 L880,140"
+                d="M25,95 
+                   L45,95 L55,88 L75,85 L95,82 
+                   C110,80 125,78 140,75
+                   L160,70 L180,62 L200,52 L220,42
+                   C240,32 260,25 280,22
+                   L320,20 L360,22 L390,28
+                   C410,35 425,45 435,58
+                   L445,72 L455,85 L465,92 L475,95"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="2.5"
@@ -134,22 +142,15 @@ export default function PoshDetails() {
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
               />
+              
+              {/* Porsche 911 windows - curved greenhouse */}
               <motion.path
-                d="M320,100 L340,65 L380,50 L440,42 L500,40 L560,42 L620,50 L660,65 L680,95"
-                fill="none"
-                stroke="url(#carGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                filter="url(#glow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
-              />
-              <motion.path
-                d="M360,60 L380,35 L440,25 L500,22 L560,25 L620,35 L640,55"
+                d="M175,65 
+                   C185,55 200,45 220,38
+                   L260,30 L300,28 L340,30 L370,38
+                   C385,45 395,55 405,68"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="2"
@@ -158,10 +159,12 @@ export default function PoshDetails() {
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
+                transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
               />
+              
+              {/* Front hood line */}
               <motion.path
-                d="M20,125 L50,115 L80,118"
+                d="M25,88 L40,80 L60,78"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="2"
@@ -169,10 +172,12 @@ export default function PoshDetails() {
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
               />
+              
+              {/* Rear spoiler hint */}
               <motion.path
-                d="M820,118 L850,115 L880,125"
+                d="M455,82 L470,78 L475,82"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="2"
@@ -180,12 +185,14 @@ export default function PoshDetails() {
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: 0.6, ease: "easeOut" }}
               />
+              
+              {/* Front wheel */}
               <motion.circle
-                cx="160"
-                cy="145"
-                r="30"
+                cx="100"
+                cy="100"
+                r="22"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="2.5"
@@ -195,56 +202,62 @@ export default function PoshDetails() {
                 transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
               />
               <motion.circle
-                cx="160"
-                cy="145"
-                r="18"
-                fill="none"
-                stroke="url(#carGradient)"
-                strokeWidth="2"
-                filter="url(#glow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx="740"
-                cy="145"
-                r="30"
-                fill="none"
-                stroke="url(#carGradient)"
-                strokeWidth="2.5"
-                filter="url(#glow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx="740"
-                cy="145"
-                r="18"
-                fill="none"
-                stroke="url(#carGradient)"
-                strokeWidth="2"
-                filter="url(#glow)"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
-              />
-              <motion.path
-                d="M160,145 L160,145 M155,140 L165,150 M165,140 L155,150"
+                cx="100"
+                cy="100"
+                r="14"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="1.5"
+                filter="url(#glow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="100"
+                cy="100"
+                r="6"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1"
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.4, delay: 1.1, ease: "easeOut" }}
               />
-              <motion.path
-                d="M740,145 L740,145 M735,140 L745,150 M745,140 L735,150"
+              
+              {/* Rear wheel */}
+              <motion.circle
+                cx="400"
+                cy="100"
+                r="22"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="2.5"
+                filter="url(#glow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="400"
+                cy="100"
+                r="14"
                 fill="none"
                 stroke="url(#carGradient)"
                 strokeWidth="1.5"
+                filter="url(#glow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="400"
+                cy="100"
+                r="6"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1"
                 filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
