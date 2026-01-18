@@ -14,7 +14,7 @@ const empreendimentos = [
     status: "Lançamento", 
     tipo: "Residencial",
     unidades: 120,
-    cidade: "São Paulo - SP",
+    cidade: "Florianópolis - SC",
     precoMin: "R$ 450.000",
     destaque: true,
     entrega: "Dez/2026"
@@ -25,7 +25,7 @@ const empreendimentos = [
     status: "Em obras", 
     tipo: "Residencial",
     unidades: 84,
-    cidade: "Campinas - SP",
+    cidade: "Joinville - SC",
     precoMin: "R$ 380.000",
     destaque: false,
     entrega: "Jun/2025"
@@ -36,7 +36,7 @@ const empreendimentos = [
     status: "Lançamento", 
     tipo: "Residencial",
     unidades: 96,
-    cidade: "Santos - SP",
+    cidade: "Balneário Camboriú - SC",
     precoMin: "R$ 520.000",
     destaque: true,
     entrega: "Mar/2027"
@@ -47,7 +47,7 @@ const empreendimentos = [
     status: "Em obras", 
     tipo: "Residencial",
     unidades: 64,
-    cidade: "Guarulhos - SP",
+    cidade: "Blumenau - SC",
     precoMin: "R$ 290.000",
     destaque: false,
     entrega: "Set/2025"
@@ -58,7 +58,7 @@ const empreendimentos = [
     status: "Lançamento", 
     tipo: "Comercial",
     unidades: 48,
-    cidade: "São Paulo - SP",
+    cidade: "Itajaí - SC",
     precoMin: "R$ 680.000",
     destaque: false,
     entrega: "Ago/2026"
@@ -69,7 +69,7 @@ const empreendimentos = [
     status: "Em obras", 
     tipo: "Residencial",
     unidades: 72,
-    cidade: "Osasco - SP",
+    cidade: "Chapecó - SC",
     precoMin: "R$ 320.000",
     destaque: false,
     entrega: "Abr/2025"
@@ -80,7 +80,7 @@ const empreendimentos = [
     status: "Pronto", 
     tipo: "Residencial",
     unidades: 108,
-    cidade: "São Bernardo - SP",
+    cidade: "Criciúma - SC",
     precoMin: "R$ 410.000",
     destaque: true,
     entrega: "Entregue"
@@ -91,7 +91,7 @@ const empreendimentos = [
     status: "Em obras", 
     tipo: "Resort",
     unidades: 200,
-    cidade: "Ubatuba - SP",
+    cidade: "Bombinhas - SC",
     precoMin: "R$ 750.000",
     destaque: true,
     entrega: "Dez/2026"
@@ -102,7 +102,7 @@ const empreendimentos = [
     status: "Pronto", 
     tipo: "Residencial",
     unidades: 88,
-    cidade: "Santo André - SP",
+    cidade: "São José - SC",
     precoMin: "R$ 355.000",
     destaque: false,
     entrega: "Entregue"
@@ -113,7 +113,7 @@ const empreendimentos = [
     status: "Lançamento", 
     tipo: "Residencial",
     unidades: 132,
-    cidade: "Jundiaí - SP",
+    cidade: "Jaraguá do Sul - SC",
     precoMin: "R$ 470.000",
     destaque: false,
     entrega: "Mai/2027"
@@ -124,7 +124,7 @@ const empreendimentos = [
     status: "Em obras", 
     tipo: "Residencial",
     unidades: 180,
-    cidade: "São Paulo - SP",
+    cidade: "Palhoça - SC",
     precoMin: "R$ 620.000",
     destaque: true,
     entrega: "Out/2026"
