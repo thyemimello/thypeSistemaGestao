@@ -21,6 +21,9 @@ import AdminImoveis from "@/pages/admin/imoveis";
 import AdminChat from "@/pages/admin/chat";
 import AdminPerfil from "@/pages/admin/perfil";
 
+// Manager Pages
+import ManagerDashboard from "@/pages/manager/dashboard";
+
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -43,6 +46,9 @@ function Router() {
       <Route path="/admin/imoveis" component={AdminImoveis} />
       <Route path="/admin/chat" component={AdminChat} />
       <Route path="/admin/perfil" component={AdminPerfil} />
+
+      {/* Manager Routes */}
+      <Route path="/manager/dashboard" component={ManagerDashboard} />
       
       <Route component={NotFound} />
     </Switch>

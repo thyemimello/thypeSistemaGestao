@@ -8,13 +8,14 @@ import {
   User, 
   PlusCircle, 
   Menu,
-  Briefcase
+  Briefcase,
+  Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface MobileLayoutProps {
   children: React.ReactNode;
-  role?: "broker" | "admin";
+  role?: "broker" | "admin" | "manager";
 }
 
 export default function MobileLayout({ children, role = "broker" }: MobileLayoutProps) {
@@ -27,12 +28,17 @@ export default function MobileLayout({ children, role = "broker" }: MobileLayout
     { icon: PlusCircle, label: "Proposta", href: "/app/proposta", highlight: true },
     { icon: MessageSquare, label: "Chat", href: "/app/chat" },
     { icon: User, label: "Perfil", href: "/app/perfil" },
-  ] : [
+  ] : role === "admin" ? [
     { icon: Home, label: "Dashboard", href: "/admin/dashboard" },
     { icon: Briefcase, label: "Gerentes", href: "/admin/gerentes" },
     { icon: Search, label: "Imóveis", href: "/admin/imoveis" },
     { icon: MessageSquare, label: "Chat Geral", href: "/admin/chat" },
     { icon: User, label: "Perfil", href: "/admin/perfil" },
+  ] : [ // Manager
+    { icon: Home, label: "Carteira", href: "/manager/dashboard" },
+    { icon: Users, label: "Equipe", href: "/manager/team" },
+    { icon: MessageSquare, label: "Chat", href: "/manager/chat" },
+    { icon: User, label: "Perfil", href: "/manager/perfil" },
   ];
 
   return (

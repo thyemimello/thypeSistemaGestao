@@ -9,7 +9,7 @@ import { Lock, User, ShieldCheck } from "lucide-react";
 
 export default function Login() {
   const [, setLocation] = useLocation();
-  const [role, setRole] = useState<'broker' | 'admin'>('broker');
+  const [role, setRole] = useState<'broker' | 'admin' | 'manager'>('broker');
   const [creci, setCreci] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
@@ -17,6 +17,8 @@ export default function Login() {
     // Simulate role-based redirect
     if (role === 'admin') {
       setLocation("/admin/dashboard");
+    } else if (role === 'manager') {
+      setLocation("/manager/dashboard");
     } else {
       setLocation("/app/home");
     }
@@ -72,20 +74,27 @@ export default function Login() {
           className="space-y-6 flex-1 flex flex-col"
         >
           {/* Role Toggle (Mock) */}
-          <div className="flex bg-white/5 p-1 rounded-lg mb-4">
+          <div className="flex bg-white/5 p-1 rounded-lg mb-4 overflow-hidden">
             <button 
               type="button"
               onClick={() => setRole('broker')}
-              className={`flex-1 py-2 text-xs font-medium rounded-md transition-all ${role === 'broker' ? 'bg-primary text-black shadow-lg' : 'text-muted-foreground'}`}
+              className={`flex-1 py-2 text-[10px] sm:text-xs font-medium rounded-md transition-all ${role === 'broker' ? 'bg-primary text-black shadow-lg' : 'text-muted-foreground hover:text-white'}`}
             >
               Corretor
             </button>
             <button 
               type="button"
-              onClick={() => setRole('admin')}
-              className={`flex-1 py-2 text-xs font-medium rounded-md transition-all ${role === 'admin' ? 'bg-primary text-black shadow-lg' : 'text-muted-foreground'}`}
+              onClick={() => setRole('manager')}
+              className={`flex-1 py-2 text-[10px] sm:text-xs font-medium rounded-md transition-all ${role === 'manager' ? 'bg-primary text-black shadow-lg' : 'text-muted-foreground hover:text-white'}`}
             >
-              Administrativo
+              Gerente
+            </button>
+            <button 
+              type="button"
+              onClick={() => setRole('admin')}
+              className={`flex-1 py-2 text-[10px] sm:text-xs font-medium rounded-md transition-all ${role === 'admin' ? 'bg-primary text-black shadow-lg' : 'text-muted-foreground hover:text-white'}`}
+            >
+              Admin
             </button>
           </div>
 
