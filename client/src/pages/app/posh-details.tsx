@@ -43,6 +43,71 @@ export default function PoshDetails() {
             transition={{ duration: 0.8 }}
             className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
           >
+            {/* Elegant background effects */}
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Radial gradient glow */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.02) 40%, transparent 70%)",
+                }}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 2, ease: "easeOut" }}
+              />
+              
+              {/* Animated light particles */}
+              {[...Array(20)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full bg-primary/30"
+                  style={{
+                    left: `${10 + (i * 4.5)}%`,
+                    top: `${20 + (i % 5) * 15}%`,
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ 
+                    opacity: [0, 0.6, 0],
+                    scale: [0, 1.5, 0],
+                    y: [0, -30, -60]
+                  }}
+                  transition={{ 
+                    duration: 3 + (i % 3),
+                    delay: 0.5 + (i * 0.15),
+                    repeat: Infinity,
+                    repeatDelay: 2
+                  }}
+                />
+              ))}
+              
+              {/* Subtle horizontal lines */}
+              <motion.div
+                className="absolute top-[35%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 0.3 }}
+              />
+              <motion.div
+                className="absolute top-[65%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/15 to-transparent"
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+              />
+              
+              {/* Corner accents */}
+              <motion.div
+                className="absolute top-8 left-8 w-16 h-16 border-l border-t border-primary/20"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              />
+              <motion.div
+                className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-primary/20"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              />
+            </div>
             <motion.svg
               viewBox="0 0 900 200"
               className="absolute w-[95%] max-w-[700px] h-auto top-1/3"
