@@ -132,9 +132,18 @@ export default function Login() {
             Acessar Plataforma
           </Button>
 
-          <p className="text-center text-[10px] text-muted-foreground uppercase tracking-widest mt-6">
-            Powered by VPR Technology
-          </p>
+          <div className="flex flex-col gap-4 mt-6">
+            <button 
+              type="button" 
+              onClick={() => setLocation("/register")}
+              className="text-xs text-white/70 hover:text-primary transition-colors uppercase tracking-wider"
+            >
+              Não tem conta? <span className="text-primary font-bold">Solicitar Acesso</span>
+            </button>
+            <p className="text-center text-[10px] text-muted-foreground uppercase tracking-widest">
+              Powered by VPR Technology
+            </p>
+          </div>
         </motion.form>
       </div>
     </div>

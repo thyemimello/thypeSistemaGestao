@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 // Pages
 import Splash from "@/pages/app/splash";
 import Login from "@/pages/app/login";
+import Register from "@/pages/app/register";
 import Home from "@/pages/app/home";
 import Chat from "@/pages/app/chat";
 import Catalogo from "@/pages/app/catalogo";
@@ -27,6 +28,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Splash} />
       <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       
       {/* App Routes (Broker) */}
       <Route path="/app/home" component={Home} />
