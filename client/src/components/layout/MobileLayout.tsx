@@ -35,8 +35,9 @@ export default function MobileLayout({ children, role = "broker" }: MobileLayout
     { icon: MessageSquare, label: "Chat Geral", href: "/admin/chat" },
     { icon: User, label: "Perfil", href: "/admin/perfil" },
   ] : [ // Manager
-    { icon: Home, label: "Carteira", href: "/manager/dashboard" },
-    { icon: Users, label: "Equipe", href: "/manager/team" },
+    { icon: Home, label: "Painel", href: "/manager/dashboard" },
+    { icon: Briefcase, label: "Carteira", href: "/manager/carteira" },
+    { icon: PlusCircle, label: "Interação", href: "/manager/interacoes", highlight: true },
     { icon: MessageSquare, label: "Chat", href: "/manager/chat" },
     { icon: User, label: "Perfil", href: "/manager/perfil" },
   ];

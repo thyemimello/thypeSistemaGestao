@@ -25,6 +25,10 @@ import AdminPerfil from "@/pages/admin/perfil";
 
 // Manager Pages
 import ManagerDashboard from "@/pages/manager/dashboard";
+import ManagerCarteira from "@/pages/manager/carteira";
+import ManagerInteracoes from "@/pages/manager/interacoes";
+import ManagerChat from "@/pages/manager/chat";
+import ManagerPerfil from "@/pages/manager/perfil";
 
 import NotFound from "@/pages/not-found";
 
@@ -52,7 +56,12 @@ function Router() {
       <Route path="/admin/perfil" component={AdminPerfil} />
 
       {/* Manager Routes */}
+      <Route path="/manager" component={ManagerDashboard} />
       <Route path="/manager/dashboard" component={ManagerDashboard} />
+      <Route path="/manager/carteira" component={ManagerCarteira} />
+      <Route path="/manager/interacoes" component={ManagerInteracoes} />
+      <Route path="/manager/chat" component={ManagerChat} />
+      <Route path="/manager/perfil" component={ManagerPerfil} />
       
       <Route component={NotFound} />
     </Switch>
