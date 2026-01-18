@@ -194,10 +194,11 @@ export default function PoshDetails() {
                   opacity: introPhase >= 2 ? 1 : 0 
                 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center justify-center gap-3 mb-4"
+                className="flex items-center justify-center gap-4 mb-4"
               >
-                <Car className="w-8 h-8 text-primary" />
-                <span className="text-sm uppercase tracking-[0.3em] text-white/60">Conceito</span>
+                <span className="w-8 h-[1px] bg-gradient-to-r from-transparent to-primary" />
+                <span className="text-xs uppercase tracking-[0.4em] text-white/50 font-light">Where Elegance Resides</span>
+                <span className="w-8 h-[1px] bg-gradient-to-l from-transparent to-primary" />
               </motion.div>
               
               <motion.h1
