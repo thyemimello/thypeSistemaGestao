@@ -1,54 +1,57 @@
 
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
 
-import Login from "@/pages/auth/login";
-import Register from "@/pages/auth/register";
-import Home from "@/pages/home";
-import MasterDashboard from "@/pages/master/dashboard";
-import GerentesList from "@/pages/master/gerentes";
-import IAChat from "@/pages/ia/chat";
-import GerentePainel from "@/pages/gerente/painel";
-import RegistrarInteracao from "@/pages/gerente/registrar-interacao";
-import CadastroImobiliaria from "@/pages/cadastro-imobiliaria";
+// Pages
+import Splash from "@/pages/app/splash";
+import Login from "@/pages/app/login";
+import Home from "@/pages/app/home";
+import Chat from "@/pages/app/chat";
+import Catalogo from "@/pages/app/catalogo";
+import Proposta from "@/pages/app/proposta";
+import Perfil from "@/pages/app/perfil";
+
+// Admin Pages
+import AdminDashboard from "@/pages/admin/dashboard";
+import AdminGerentes from "@/pages/admin/gerentes";
+import AdminImoveis from "@/pages/admin/imoveis";
+import AdminChat from "@/pages/admin/chat";
+import AdminPerfil from "@/pages/admin/perfil";
+
+import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Login} />
+      <Route path="/" component={Splash} />
       <Route path="/login" component={Login} />
-      <Route path="/cadastro" component={Register} />
       
-      <Route path="/home" component={Home} />
+      {/* App Routes (Broker) */}
+      <Route path="/app/home" component={Home} />
+      <Route path="/app/chat" component={Chat} />
+      <Route path="/app/catalogo" component={Catalogo} />
+      <Route path="/app/proposta" component={Proposta} />
+      <Route path="/app/perfil" component={Perfil} />
       
-      {/* Master Routes */}
-      <Route path="/master/dashboard" component={MasterDashboard} />
-      <Route path="/master/gerentes" component={GerentesList} />
-      <Route path="/ia" component={IAChat} />
-      <Route path="/cadastro-imobiliaria" component={CadastroImobiliaria} />
-      
-      {/* Gerente Routes */}
-      <Route path="/gerente/painel" component={GerentePainel} />
-      <Route path="/gerente/registrar-interacao" component={RegistrarInteracao} />
+      {/* Admin Routes */}
+      <Route path="/admin/dashboard" component={AdminDashboard} />
+      <Route path="/admin/gerentes" component={AdminGerentes} />
+      <Route path="/admin/imoveis" component={AdminImoveis} />
+      <Route path="/admin/chat" component={AdminChat} />
+      <Route path="/admin/perfil" component={AdminPerfil} />
       
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Router />
-        <Toaster />
-      </TooltipProvider>
+      <Router />
+      <Toaster />
     </QueryClientProvider>
   );
 }
-
-export default App;
