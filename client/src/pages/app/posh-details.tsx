@@ -45,7 +45,8 @@ export default function PoshDetails() {
           >
             <motion.svg
               viewBox="0 0 800 300"
-              className="absolute w-[90%] max-w-[600px] h-auto"
+              className="absolute w-[90%] max-w-[600px] h-auto drop-shadow-[0_0_30px_rgba(201,169,98,0.5)]"
+              style={{ filter: "drop-shadow(0 0 20px rgba(201, 169, 98, 0.6)) drop-shadow(0 0 40px rgba(201, 169, 98, 0.3))" }}
               initial={{ x: "-120%", opacity: 0 }}
               animate={{ 
                 x: introPhase >= 1 ? "0%" : "-120%", 
@@ -60,8 +61,9 @@ export default function PoshDetails() {
                 d="M50,200 L80,200 L100,180 L150,170 L200,165 L280,165 L320,140 L380,130 L450,130 L520,140 L580,145 L620,165 L700,170 L730,180 L750,200 L780,200"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -70,8 +72,9 @@ export default function PoshDetails() {
                 d="M280,165 L300,120 L380,100 L450,100 L530,120 L580,145"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
@@ -80,8 +83,9 @@ export default function PoshDetails() {
                 d="M310,115 L320,85 L360,70 L420,70 L470,85 L510,115"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 strokeLinecap="round"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
@@ -92,7 +96,8 @@ export default function PoshDetails() {
                 r="35"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
@@ -103,7 +108,8 @@ export default function PoshDetails() {
                 r="20"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
@@ -114,7 +120,8 @@ export default function PoshDetails() {
                 r="35"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
@@ -125,7 +132,8 @@ export default function PoshDetails() {
                 r="20"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
@@ -134,8 +142,9 @@ export default function PoshDetails() {
                 d="M50,180 L80,170 L100,175"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 strokeLinecap="round"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
@@ -144,18 +153,39 @@ export default function PoshDetails() {
                 d="M700,175 L730,170 L750,180"
                 fill="none"
                 stroke="url(#carGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 strokeLinecap="round"
+                filter="url(#glow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
                 transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
               />
               <defs>
                 <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#C9A962" stopOpacity="0.3" />
-                  <stop offset="50%" stopColor="#C9A962" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.8" />
+                  <stop offset="0%" stopColor="#ff0080">
+                    <animate attributeName="stop-color" values="#ff0080;#00ffff;#00ff00;#ffff00;#ff0080" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="25%" stopColor="#00ffff">
+                    <animate attributeName="stop-color" values="#00ffff;#00ff00;#ffff00;#ff0080;#00ffff" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="50%" stopColor="#00ff00">
+                    <animate attributeName="stop-color" values="#00ff00;#ffff00;#ff0080;#00ffff;#00ff00" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="75%" stopColor="#ffff00">
+                    <animate attributeName="stop-color" values="#ffff00;#ff0080;#00ffff;#00ff00;#ffff00" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stopColor="#ff0080">
+                    <animate attributeName="stop-color" values="#ff0080;#00ffff;#00ff00;#ffff00;#ff0080" dur="3s" repeatCount="indefinite" />
+                  </stop>
                 </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
             </motion.svg>
 
