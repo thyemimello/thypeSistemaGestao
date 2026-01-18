@@ -1,143 +1,190 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileLayout from "@/components/layout/MobileLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  MoreHorizontal, 
-  Plus, 
-  Search, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Briefcase,
-  UserPlus
-} from "lucide-react";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger,
-  DialogFooter
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+import { MoreHorizontal, Plus, TrendingUp, TrendingDown } from "lucide-react";
+import { api, type Manager } from "@/lib/api";
+import { useToast } from "@/hooks/use-toast";
 
 export default function AdminGerentes() {
-  const [managers, setManagers] = useState([
-    { id: 1, name: "Ricardo Silva", region: "Zona Sul", performance: 92, team: 12, email: "ricardo@vpr.my", phone: "(11) 99999-1111", avatar: "" },
-    { id: 2, name: "Amanda Costa", region: "Jardins", performance: 88, team: 8, email: "amanda@vpr.my", phone: "(11) 99999-2222", avatar: "" },
-    { id: 3, name: "Pedro Santos", region: "Zona Oeste", performance: 75, team: 15, email: "pedro@vpr.my", phone: "(11) 99999-3333", avatar: "" },
-  ]);
+  const [managers, setManagers] = useState<Manager[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
-  const [isNewManagerOpen, setIsNewManagerOpen] = useState(false);
+  useEffect(() => {
+    loadManagers();
+  }, []);
+
+  async function loadManagers() {
+    try {
+      const data = await api.getManagers();
+      setManagers(data);
+    } catch (error: any) {
+      toast({
+        title: "Erro ao carregar gerentes",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const getPerformanceColor = (roi: number) => {
+    if (roi >= 100) return "text-green-500";
+    if (roi >= 70) return "text-primary";
+    return "text-yellow-500";
+  };
 
   return (
     <MobileLayout role="admin">
       <div className="pb-8">
-        <header className="px-6 pt-12 pb-6 bg-black/80 backdrop-blur-md sticky top-0 z-40 border-b border-white/5">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-2xl font-display font-bold text-white mb-1">Equipe de Gerentes</h1>
-              <p className="text-sm text-muted-foreground">Gestão e Performance</p>
-            </div>
-            
-            <Dialog open={isNewManagerOpen} onOpenChange={setIsNewManagerOpen}>
-              <DialogTrigger asChild>
-                <Button size="icon" className="rounded-full bg-primary text-black hover:bg-primary/90">
-                  <Plus className="w-5 h-5" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="bg-[#1a1f3a] border-white/10 text-white max-w-sm mx-auto rounded-2xl">
-                <DialogHeader>
-                  <DialogTitle className="font-display text-xl text-primary">Novo Gerente</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4 py-4">
-                  <div className="space-y-2">
-                    <Label className="text-xs uppercase tracking-wider text-muted-foreground">Nome Completo</Label>
-                    <Input placeholder="Ex: João Souza" className="bg-white/5 border-white/10 text-white" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs uppercase tracking-wider text-muted-foreground">E-mail Corporativo</Label>
-                    <Input placeholder="joao@vpr.my" className="bg-white/5 border-white/10 text-white" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs uppercase tracking-wider text-muted-foreground">Região de Atuação</Label>
-                    <Input placeholder="Ex: Zona Sul" className="bg-white/5 border-white/10 text-white" />
-                  </div>
-                </div>
-                <DialogFooter>
-                  <Button className="w-full bg-primary text-black hover:bg-primary/90">
-                    <UserPlus className="w-4 h-4 mr-2" />
-                    Cadastrar Gerente
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            <Input 
-              placeholder="Buscar gerente..." 
-              className="pl-10 bg-white/5 border-white/10 text-white focus:border-primary/50 h-10 rounded-xl" 
-            />
-          </div>
+        <header className="px-6 pt-12 pb-6">
+          <h1 className="text-2xl font-display font-bold text-white mb-1">Gerentes</h1>
+          <p className="text-sm text-muted-foreground">Equipe de Relacionamento</p>
         </header>
 
-        <div className="px-6 mt-6 space-y-4">
-          {managers.map((manager) => (
-            <Card key={manager.id} className="bg-card border-white/5 overflow-hidden group">
-              <CardContent className="p-0">
-                <div className="p-4 flex items-start gap-4">
-                  <Avatar className="h-14 w-14 border border-white/10">
-                    <AvatarFallback className="bg-primary/10 text-primary text-lg font-display">
-                      {manager.name.substring(0, 1)}
-                    </AvatarFallback>
-                  </Avatar>
-                  
-                  <div className="flex-1 min-w-0">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-bold text-white text-base truncate">{manager.name}</h3>
-                        <p className="text-xs text-primary flex items-center gap-1 mt-0.5">
-                          <MapPin className="w-3 h-3" /> {manager.region}
-                        </p>
-                      </div>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2 text-muted-foreground hover:text-white">
-                        <MoreHorizontal className="w-4 h-4" />
-                      </Button>
-                    </div>
+        <div className="px-6 flex items-center justify-between mb-6">
+          <div>
+            <p className="text-sm text-muted-foreground">Total de Gerentes</p>
+            <p className="text-3xl font-bold text-white">{managers.length}</p>
+          </div>
+          <Button 
+            size="sm" 
+            className="h-10 bg-primary hover:bg-primary/90 text-black"
+            data-testid="button-add-manager"
+          >
+            <Plus className="w-4 h-4 mr-2" /> Novo Gerente
+          </Button>
+        </div>
+
+        {loading ? (
+          <div className="px-6 space-y-4">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="bg-card border-white/5 animate-pulse">
+                <CardContent className="p-4">
+                  <div className="h-16 bg-white/5 rounded" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <div className="px-6 space-y-4">
+            {managers.map((manager) => (
+              <Card 
+                key={manager.id} 
+                className="bg-card border-white/5 overflow-hidden hover:border-primary/30 transition-colors"
+                data-testid={`card-manager-${manager.id}`}
+              >
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <Avatar className="h-14 w-14 border-2 border-white/10">
+                      {manager.avatar ? (
+                        <AvatarImage src={manager.avatar} alt={manager.name} />
+                      ) : (
+                        <AvatarFallback className="bg-primary/20 text-primary font-bold">
+                          {manager.name.substring(0, 2).toUpperCase()}
+                        </AvatarFallback>
+                      )}
+                    </Avatar>
                     
-                    <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1.5">
-                        <Briefcase className="w-3 h-3 text-white/40" />
-                        <span className="text-white">{manager.team}</span> corretores
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="font-bold text-white text-base truncate" data-testid={`text-manager-name-${manager.id}`}>
+                          {manager.name}
+                        </h3>
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="h-8 w-8 -mr-2 text-muted-foreground hover:text-white"
+                          data-testid={`button-menu-${manager.id}`}
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </Button>
                       </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className={`w-2 h-2 rounded-full ${manager.performance > 90 ? 'bg-green-500' : 'bg-yellow-500'}`} />
-                        <span className="text-white">{manager.performance}%</span> performance
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge 
+                          variant="outline" 
+                          className={`text-[10px] ${getPerformanceColor(manager.kpis.roi)} border-current`}
+                        >
+                          ROI: {manager.kpis.roi}%
+                        </Badge>
+                        <Badge variant="outline" className="text-[10px] text-white/60 border-white/20">
+                          IEG: {manager.kpis.ieg}
+                        </Badge>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Quick Actions */}
-                <div className="grid grid-cols-2 border-t border-white/5">
-                  <button className="flex items-center justify-center gap-2 p-3 text-xs font-medium text-white/60 hover:bg-white/5 hover:text-primary transition-colors border-r border-white/5">
-                    <Phone className="w-3.5 h-3.5" /> Ligar
-                  </button>
-                  <button className="flex items-center justify-center gap-2 p-3 text-xs font-medium text-white/60 hover:bg-white/5 hover:text-primary transition-colors">
-                    <Mail className="w-3.5 h-3.5" /> Mensagem
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                  <div className="grid grid-cols-4 gap-4">
+                    <div className="text-center">
+                      <p className="text-xl font-bold text-white" data-testid={`text-sales-${manager.id}`}>
+                        {manager.kpis.sales}
+                      </p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Vendas</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xl font-bold text-white" data-testid={`text-reservations-${manager.id}`}>
+                        {manager.kpis.reservations}
+                      </p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Reservas</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xl font-bold text-primary" data-testid={`text-effort-${manager.id}`}>
+                        {manager.kpis.effort}
+                      </p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Esforço</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xl font-bold text-primary" data-testid={`text-relationship-${manager.id}`}>
+                        {manager.kpis.relationship}
+                      </p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Relação</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between">
+                    {manager.kpis.roi >= 100 ? (
+                      <div className="flex items-center gap-1 text-green-500 text-xs">
+                        <TrendingUp className="w-3 h-3" />
+                        <span>Alto Desempenho</span>
+                      </div>
+                    ) : manager.kpis.roi >= 70 ? (
+                      <div className="flex items-center gap-1 text-primary text-xs">
+                        <TrendingUp className="w-3 h-3" />
+                        <span>Bom Desempenho</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-1 text-yellow-500 text-xs">
+                        <TrendingDown className="w-3 h-3" />
+                        <span>Precisa Atenção</span>
+                      </div>
+                    )}
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="h-8 text-xs border-white/10 hover:bg-white/5"
+                      data-testid={`button-view-details-${manager.id}`}
+                    >
+                      Ver Detalhes
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+
+            {managers.length === 0 && !loading && (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-sm">Nenhum gerente cadastrado ainda.</p>
+                <Button className="mt-4 bg-primary hover:bg-primary/90 text-black">
+                  <Plus className="w-4 h-4 mr-2" /> Adicionar Primeiro Gerente
+                </Button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </MobileLayout>
   );
