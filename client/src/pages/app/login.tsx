@@ -133,6 +133,32 @@ export default function Login() {
           </Button>
 
           <div className="flex flex-col gap-4 mt-6">
+            <div className="flex gap-2">
+              <button 
+                type="button" 
+                onClick={() => setLocation("/app/home")}
+                className="flex-1 text-[10px] py-2 px-3 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                data-testid="button-demo-corretor"
+              >
+                Demo Corretor
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setLocation("/manager/dashboard")}
+                className="flex-1 text-[10px] py-2 px-3 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                data-testid="button-demo-gerente"
+              >
+                Demo Gerente
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setLocation("/admin/dashboard")}
+                className="flex-1 text-[10px] py-2 px-3 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                data-testid="button-demo-admin"
+              >
+                Demo Admin
+              </button>
+            </div>
             <button 
               type="button" 
               onClick={() => setLocation("/register")}
