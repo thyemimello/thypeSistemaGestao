@@ -46,7 +46,7 @@ export default function Home() {
             />
             
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
             
             {/* Content */}
             <div className="absolute bottom-0 left-0 w-full p-6">
