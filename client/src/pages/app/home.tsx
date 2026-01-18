@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Bell, MapPin, ArrowRight, Star, Car } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 export default function Home() {
+  const [, setLocation] = useLocation();
+
   return (
     <MobileLayout>
       <div className="pb-8">
@@ -58,7 +61,11 @@ export default function Home() {
                 Onde a engenharia automotiva de luxo encontra a arquitetura contemporânea.
               </p>
               
-              <Button className="w-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white group-hover:border-primary/50 transition-all">
+              <Button 
+                onClick={() => setLocation("/app/posh-details")}
+                className="w-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white group-hover:border-primary/50 transition-all"
+                data-testid="button-explore-posh"
+              >
                 Explorar Detalhes <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

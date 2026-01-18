@@ -14,6 +14,7 @@ import Chat from "@/pages/app/chat";
 import Catalogo from "@/pages/app/catalogo";
 import Proposta from "@/pages/app/proposta";
 import Perfil from "@/pages/app/perfil";
+import PoshDetails from "@/pages/app/posh-details";
 
 // Admin Pages
 import AdminDashboard from "@/pages/admin/dashboard";
@@ -40,6 +41,7 @@ function Router() {
       <Route path="/app/catalogo" component={Catalogo} />
       <Route path="/app/proposta" component={Proposta} />
       <Route path="/app/perfil" component={Perfil} />
+      <Route path="/app/posh-details" component={PoshDetails} />
       
       {/* Admin Routes */}
       <Route path="/admin/dashboard" component={AdminDashboard} />
