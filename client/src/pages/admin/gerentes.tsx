@@ -1,36 +1,90 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import MobileLayout from "@/components/layout/MobileLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal, Plus, TrendingUp, TrendingDown } from "lucide-react";
-import { api, type Manager } from "@/lib/api";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MoreHorizontal, Plus, TrendingUp, TrendingDown, Search, Phone, Mail, MapPin, Users, Check, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+interface Manager {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  region: string;
+  avatar?: string;
+  kpis: {
+    roi: number;
+    ieg: number;
+    sales: number;
+    reservations: number;
+    effort: number;
+    relationship: number;
+  };
+  partners: number;
+}
+
 export default function AdminGerentes() {
-  const [managers, setManagers] = useState<Manager[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showCadastro, setShowCadastro] = useState(false);
+  const [saving, setSaving] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    loadManagers();
-  }, []);
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    regiao: ""
+  });
 
-  async function loadManagers() {
-    try {
-      const data = await api.getManagers();
-      setManagers(data);
-    } catch (error: any) {
-      toast({
-        title: "Erro ao carregar gerentes",
-        description: error.message,
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [managers, setManagers] = useState<Manager[]>([
+    { 
+      id: 1, 
+      name: "Ricardo Silva", 
+      email: "ricardo@thype.com.br",
+      phone: "(11) 99999-1111",
+      region: "Zona Sul",
+      kpis: { roi: 125, ieg: 8.5, sales: 24, reservations: 12, effort: 87, relationship: 92 },
+      partners: 18
+    },
+    { 
+      id: 2, 
+      name: "Amanda Costa", 
+      email: "amanda@thype.com.br",
+      phone: "(11) 99999-2222",
+      region: "Jardins",
+      kpis: { roi: 98, ieg: 7.8, sales: 18, reservations: 8, effort: 75, relationship: 85 },
+      partners: 14
+    },
+    { 
+      id: 3, 
+      name: "Pedro Santos", 
+      email: "pedro@thype.com.br",
+      phone: "(11) 99999-3333",
+      region: "Zona Oeste",
+      kpis: { roi: 65, ieg: 6.2, sales: 10, reservations: 5, effort: 60, relationship: 70 },
+      partners: 22
+    },
+    { 
+      id: 4, 
+      name: "Juliana Mendes", 
+      email: "juliana@thype.com.br",
+      phone: "(11) 99999-4444",
+      region: "Centro",
+      kpis: { roi: 110, ieg: 8.0, sales: 20, reservations: 10, effort: 82, relationship: 88 },
+      partners: 16
+    },
+  ]);
+
+  const filteredManagers = managers.filter(m => 
+    m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    m.region.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const getPerformanceColor = (roi: number) => {
     if (roi >= 100) return "text-green-500";
@@ -38,13 +92,64 @@ export default function AdminGerentes() {
     return "text-yellow-500";
   };
 
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSave = async () => {
+    if (!formData.nome || !formData.email || !formData.regiao) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Preencha nome, email e região.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setSaving(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const newManager: Manager = {
+      id: managers.length + 1,
+      name: formData.nome,
+      email: formData.email,
+      phone: formData.telefone,
+      region: formData.regiao,
+      kpis: { roi: 0, ieg: 0, sales: 0, reservations: 0, effort: 0, relationship: 0 },
+      partners: 0
+    };
+
+    setManagers(prev => [newManager, ...prev]);
+    setSaving(false);
+    setShowCadastro(false);
+    setFormData({ nome: "", email: "", telefone: "", regiao: "" });
+
+    toast({
+      title: "Gerente cadastrado!",
+      description: `${newManager.name} foi adicionado com sucesso.`,
+    });
+  };
+
   return (
     <MobileLayout role="admin">
       <div className="pb-8">
-        <header className="px-6 pt-12 pb-6">
+        <header className="px-6 pt-12 pb-4">
           <h1 className="text-2xl font-display font-bold text-white mb-1">Gerentes</h1>
           <p className="text-sm text-muted-foreground">Equipe de Relacionamento</p>
         </header>
+
+        <div className="px-6 mb-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+            <Input
+              placeholder="Buscar gerente..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 bg-white/5 border-white/10 text-white h-11 rounded-xl"
+              data-testid="input-search-gerentes"
+            />
+          </div>
+        </div>
 
         <div className="px-6 flex items-center justify-between mb-6">
           <div>
@@ -54,27 +159,22 @@ export default function AdminGerentes() {
           <Button 
             size="sm" 
             className="h-10 bg-primary hover:bg-primary/90 text-black"
+            onClick={() => setShowCadastro(true)}
             data-testid="button-add-manager"
           >
             <Plus className="w-4 h-4 mr-2" /> Novo Gerente
           </Button>
         </div>
 
-        {loading ? (
-          <div className="px-6 space-y-4">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="bg-card border-white/5 animate-pulse">
-                <CardContent className="p-4">
-                  <div className="h-16 bg-white/5 rounded" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="px-6 space-y-4">
-            {managers.map((manager) => (
+        <div className="px-6 space-y-4">
+          {filteredManagers.map((manager, index) => (
+            <motion.div
+              key={manager.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+            >
               <Card 
-                key={manager.id} 
                 className="bg-card border-white/5 overflow-hidden hover:border-primary/30 transition-colors"
                 data-testid={`card-manager-${manager.id}`}
               >
@@ -104,7 +204,10 @@ export default function AdminGerentes() {
                           <MoreHorizontal className="w-4 h-4" />
                         </Button>
                       </div>
-                      <div className="flex items-center gap-2 mb-2">
+                      <p className="text-xs text-white/50 flex items-center gap-1">
+                        <MapPin className="w-3 h-3" /> {manager.region}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
                         <Badge 
                           variant="outline" 
                           className={`text-[10px] ${getPerformanceColor(manager.kpis.roi)} border-current`}
@@ -113,6 +216,9 @@ export default function AdminGerentes() {
                         </Badge>
                         <Badge variant="outline" className="text-[10px] text-white/60 border-white/20">
                           IEG: {manager.kpis.ieg}
+                        </Badge>
+                        <Badge variant="outline" className="text-[10px] text-white/60 border-white/20">
+                          <Users className="w-3 h-3 mr-1" /> {manager.partners}
                         </Badge>
                       </div>
                     </div>
@@ -173,19 +279,105 @@ export default function AdminGerentes() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            </motion.div>
+          ))}
 
-            {managers.length === 0 && !loading && (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground text-sm">Nenhum gerente cadastrado ainda.</p>
-                <Button className="mt-4 bg-primary hover:bg-primary/90 text-black">
-                  <Plus className="w-4 h-4 mr-2" /> Adicionar Primeiro Gerente
-                </Button>
-              </div>
-            )}
-          </div>
-        )}
+          {filteredManagers.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-sm">Nenhum gerente encontrado.</p>
+            </div>
+          )}
+        </div>
       </div>
+
+      <Dialog open={showCadastro} onOpenChange={setShowCadastro}>
+        <DialogContent className="bg-card border-white/10 text-white max-w-sm mx-auto">
+          <DialogHeader>
+            <DialogTitle className="text-white flex items-center gap-2">
+              <Users className="w-5 h-5 text-primary" />
+              Novo Gerente
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-4 pt-2">
+            <div className="space-y-1">
+              <Label className="text-xs text-white/50">Nome Completo *</Label>
+              <Input
+                value={formData.nome}
+                onChange={(e) => handleInputChange("nome", e.target.value)}
+                placeholder="Nome do gerente"
+                className="bg-white/5 border-white/10 text-white h-11 rounded-xl"
+                data-testid="input-nome-gerente"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label className="text-xs text-white/50 flex items-center gap-1">
+                <Mail className="w-3 h-3" /> E-mail *
+              </Label>
+              <Input
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                placeholder="email@thype.com.br"
+                className="bg-white/5 border-white/10 text-white h-11 rounded-xl"
+                data-testid="input-email-gerente"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label className="text-xs text-white/50 flex items-center gap-1">
+                <Phone className="w-3 h-3" /> Telefone
+              </Label>
+              <Input
+                value={formData.telefone}
+                onChange={(e) => handleInputChange("telefone", e.target.value)}
+                placeholder="(11) 99999-9999"
+                className="bg-white/5 border-white/10 text-white h-11 rounded-xl"
+                data-testid="input-telefone-gerente"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label className="text-xs text-white/50 flex items-center gap-1">
+                <MapPin className="w-3 h-3" /> Região de Atuação *
+              </Label>
+              <Input
+                value={formData.regiao}
+                onChange={(e) => handleInputChange("regiao", e.target.value)}
+                placeholder="Ex: Zona Sul, Jardins..."
+                className="bg-white/5 border-white/10 text-white h-11 rounded-xl"
+                data-testid="input-regiao-gerente"
+              />
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <Button 
+                onClick={() => setShowCadastro(false)}
+                variant="outline"
+                className="flex-1 h-11 border-white/10 text-white hover:bg-white/5 rounded-xl"
+              >
+                <X className="w-4 h-4 mr-2" /> Cancelar
+              </Button>
+              <Button 
+                onClick={handleSave}
+                disabled={saving}
+                className="flex-1 h-11 bg-primary hover:bg-primary/90 text-black font-bold rounded-xl"
+                data-testid="button-salvar-gerente"
+              >
+                {saving ? (
+                  <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <Check className="w-4 h-4 mr-2" />
+                    Cadastrar
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </MobileLayout>
   );
 }
