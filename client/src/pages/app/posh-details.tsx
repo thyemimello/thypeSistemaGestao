@@ -46,7 +46,7 @@ export default function PoshDetails() {
             <motion.svg
               viewBox="0 0 800 300"
               className="absolute w-[90%] max-w-[600px] h-auto"
-              style={{ filter: "drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.4))" }}
+              style={{ filter: "drop-shadow(0 0 12px rgba(212, 175, 55, 0.6))" }}
               initial={{ x: "-120%", opacity: 0 }}
               animate={{ 
                 x: introPhase >= 1 ? "0%" : "-120%", 
@@ -162,15 +162,15 @@ export default function PoshDetails() {
               />
               <defs>
                 <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#C9A962" stopOpacity="0.4" />
-                  <stop offset="30%" stopColor="#D4AF37" stopOpacity="1" />
-                  <stop offset="70%" stopColor="#C9A962" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.6" />
+                  <stop offset="0%" stopColor="#B8860B" stopOpacity="0.6" />
+                  <stop offset="20%" stopColor="#D4AF37" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#FFD700" stopOpacity="1" />
+                  <stop offset="80%" stopColor="#D4AF37" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#B8860B" stopOpacity="0.6" />
                 </linearGradient>
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
                   <feMerge>
-                    <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
