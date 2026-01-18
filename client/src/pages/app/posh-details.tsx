@@ -45,8 +45,8 @@ export default function PoshDetails() {
           >
             <motion.svg
               viewBox="0 0 800 300"
-              className="absolute w-[90%] max-w-[600px] h-auto drop-shadow-[0_0_30px_rgba(201,169,98,0.5)]"
-              style={{ filter: "drop-shadow(0 0 20px rgba(201, 169, 98, 0.6)) drop-shadow(0 0 40px rgba(201, 169, 98, 0.3))" }}
+              className="absolute w-[90%] max-w-[600px] h-auto"
+              style={{ filter: "drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.4))" }}
               initial={{ x: "-120%", opacity: 0 }}
               animate={{ 
                 x: introPhase >= 1 ? "0%" : "-120%", 
@@ -162,24 +162,13 @@ export default function PoshDetails() {
               />
               <defs>
                 <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#ff0080">
-                    <animate attributeName="stop-color" values="#ff0080;#00ffff;#00ff00;#ffff00;#ff0080" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="25%" stopColor="#00ffff">
-                    <animate attributeName="stop-color" values="#00ffff;#00ff00;#ffff00;#ff0080;#00ffff" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="50%" stopColor="#00ff00">
-                    <animate attributeName="stop-color" values="#00ff00;#ffff00;#ff0080;#00ffff;#00ff00" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="75%" stopColor="#ffff00">
-                    <animate attributeName="stop-color" values="#ffff00;#ff0080;#00ffff;#00ff00;#ffff00" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="100%" stopColor="#ff0080">
-                    <animate attributeName="stop-color" values="#ff0080;#00ffff;#00ff00;#ffff00;#ff0080" dur="3s" repeatCount="indefinite" />
-                  </stop>
+                  <stop offset="0%" stopColor="#C9A962" stopOpacity="0.4" />
+                  <stop offset="30%" stopColor="#D4AF37" stopOpacity="1" />
+                  <stop offset="70%" stopColor="#C9A962" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.6" />
                 </linearGradient>
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="coloredBlur"/>
