@@ -43,24 +43,121 @@ export default function PoshDetails() {
             transition={{ duration: 0.8 }}
             className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
           >
-            <motion.div
-              initial={{ x: "-100%", opacity: 0 }}
+            <motion.svg
+              viewBox="0 0 800 300"
+              className="absolute w-[90%] max-w-[600px] h-auto"
+              initial={{ x: "-120%", opacity: 0 }}
               animate={{ 
-                x: introPhase >= 1 ? "0%" : "-100%", 
+                x: introPhase >= 1 ? "0%" : "-120%", 
                 opacity: introPhase >= 1 ? 1 : 0 
               }}
               transition={{ 
-                duration: 1.2, 
+                duration: 1.5, 
                 ease: [0.16, 1, 0.3, 1] 
               }}
-              className="absolute inset-0 flex items-center justify-center"
             >
-              <img
-                src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2574&auto=format&fit=crop"
-                alt="Luxury Car"
-                className="w-[120%] h-[120%] object-cover opacity-40"
+              <motion.path
+                d="M50,200 L80,200 L100,180 L150,170 L200,165 L280,165 L320,140 L380,130 L450,130 L520,140 L580,145 L620,165 L700,170 L730,180 L750,200 L780,200"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
               />
-            </motion.div>
+              <motion.path
+                d="M280,165 L300,120 L380,100 L450,100 L530,120 L580,145"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+              />
+              <motion.path
+                d="M310,115 L320,85 L360,70 L420,70 L470,85 L510,115"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="160"
+                cy="200"
+                r="35"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="160"
+                cy="200"
+                r="20"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1.5"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="650"
+                cy="200"
+                r="35"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx="650"
+                cy="200"
+                r="20"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1.5"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+              />
+              <motion.path
+                d="M50,180 L80,170 L100,175"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
+              />
+              <motion.path
+                d="M700,175 L730,170 L750,180"
+                fill="none"
+                stroke="url(#carGradient)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: introPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
+              />
+              <defs>
+                <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#C9A962" stopOpacity="0.3" />
+                  <stop offset="50%" stopColor="#C9A962" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
+            </motion.svg>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -69,7 +166,7 @@ export default function PoshDetails() {
                 scale: introPhase >= 2 ? 1 : 0.8 
               }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative z-10 text-center"
+              className="relative z-10 text-center mt-32"
             >
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
