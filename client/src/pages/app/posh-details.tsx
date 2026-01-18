@@ -520,14 +520,14 @@ export default function PoshDetails() {
             className="mb-8"
           >
             <h2 className="text-lg font-display font-bold text-white mb-3">Galeria</h2>
-            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="grid grid-cols-2 gap-3">
               {gallery.map((img, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.1 + i * 0.1 }}
-                  className="flex-shrink-0 w-48 h-32 rounded-xl overflow-hidden"
+                  className="aspect-video rounded-xl overflow-hidden"
                 >
                   <img src={img} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover" />
                 </motion.div>

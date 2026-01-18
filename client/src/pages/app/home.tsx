@@ -74,10 +74,10 @@ export default function Home() {
 
         {/* Categories / Quick Filters */}
         <section className="mt-8 px-6">
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex flex-wrap gap-2">
             {['Lançamentos', 'Em Obras', 'Prontos', 'Comercial'].map((cat, i) => (
               <button key={i} className={`
-                whitespace-nowrap px-4 py-2 rounded-full text-xs font-medium border transition-all
+                px-4 py-2 rounded-full text-xs font-medium border transition-all
                 ${i === 0 ? 'bg-primary text-black border-primary' : 'bg-transparent text-white/60 border-white/10'}
               `}>
                 {cat}
