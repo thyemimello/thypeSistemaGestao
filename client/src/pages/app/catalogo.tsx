@@ -86,17 +86,6 @@ const empreendimentos = [
     entrega: "Entregue"
   },
   { 
-    id: 8, 
-    nome: "LOGO - VPR.M7", 
-    status: "Lançamento", 
-    tipo: "Residencial",
-    unidades: 156,
-    cidade: "São Paulo - SP",
-    precoMin: "R$ 890.000",
-    destaque: true,
-    entrega: "Jul/2027"
-  },
-  { 
     id: 9, 
     nome: "MAR DA GALILEIA", 
     status: "Em obras", 
