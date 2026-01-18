@@ -27,8 +27,10 @@ export default function PoshDetails() {
     { icon: Car, label: "4 Vagas", sublabel: "Garagem coberta" },
   ];
 
+  const mainImage = "/attached_assets/image_1768769027112.png";
+  
   const gallery = [
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop",
+    "/attached_assets/image_1768769027112.png",
     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop",
   ];
@@ -332,7 +334,7 @@ export default function PoshDetails() {
       >
         <div className="relative h-[60vh]">
           <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop"
+            src={mainImage}
             alt="POSH Residence"
             className="w-full h-full object-cover"
           />
