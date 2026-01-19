@@ -77,7 +77,7 @@ export default function Login() {
             transition={{ delay: 0.2 }}
             className="text-muted-foreground text-sm"
           >
-            Sistema de Gestão Estratégica de Relacionamentos
+            Construtora e Incorporadora
           </motion.p>
         </div>
 
