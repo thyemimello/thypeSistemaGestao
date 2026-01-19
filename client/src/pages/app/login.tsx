@@ -60,7 +60,7 @@ export default function Login() {
             animate={{ opacity: 1, y: 0 }}
             className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center border border-primary/30 mb-6"
           >
-            <span className="font-display font-bold text-xl text-primary">T</span>
+            <span className="font-display font-bold text-xl text-primary">V</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -68,8 +68,8 @@ export default function Login() {
             transition={{ delay: 0.1 }}
             className="text-4xl font-display font-bold text-white mb-2"
           >
-            Bem-vindo ao <br />
-            <span className="text-primary">THYPE</span>
+            Bem-vindo a <br />
+            <span className="text-primary">VPR.M7</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -168,7 +168,7 @@ export default function Login() {
               Não tem conta? <span className="text-primary font-bold">Solicitar Acesso</span>
             </button>
             <p className="text-center text-[10px] text-muted-foreground uppercase tracking-widest">
-              Powered by THYPE Technology
+              Powered by VPR.M7
             </p>
           </div>
         </motion.form>
