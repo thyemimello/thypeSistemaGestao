@@ -23,22 +23,32 @@ export default function Splash() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="z-10 flex flex-col items-center gap-4"
+        className="z-10 flex flex-col items-center gap-6"
       >
-        {/* Simulated Logo based on user upload */}
+        {/* THYPE Logo */}
         <div className="relative">
-          <div className="w-24 h-24 border-2 border-primary/30 rounded-full flex items-center justify-center animate-pulse">
-            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-primary/50">
-              <span className="font-display font-bold text-3xl text-primary tracking-widest">VPR</span>
+          <motion.div 
+            className="w-28 h-28 border-2 border-primary/40 rounded-2xl flex items-center justify-center"
+            animate={{ 
+              boxShadow: ["0 0 20px rgba(212,175,55,0.1)", "0 0 40px rgba(212,175,55,0.3)", "0 0 20px rgba(212,175,55,0.1)"]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center backdrop-blur-sm border border-primary/30">
+              <span className="font-display font-black text-4xl bg-gradient-to-r from-primary via-[#D4AF37] to-primary bg-clip-text text-transparent">T</span>
             </div>
-          </div>
+          </motion.div>
         </div>
         
-        <div className="text-center space-y-1">
-          <h1 className="font-display text-2xl font-bold tracking-[0.2em] text-white">
-            VPR<span className="text-primary">.MY</span>
-          </h1>
-          <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground">Empreendimentos</p>
+        <div className="text-center space-y-2">
+          <motion.h1 
+            className="font-display text-4xl font-black tracking-[0.15em] bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent"
+            animate={{ opacity: [0.8, 1, 0.8] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            THYPE
+          </motion.h1>
+          <p className="text-[10px] uppercase tracking-[0.5em] text-primary/60">Strategic Management</p>
         </div>
       </motion.div>
 
